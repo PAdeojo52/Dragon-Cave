@@ -10,37 +10,55 @@ namespace Dragon_Cave
     {
         static void Main(string[] args)
         {
+
+
+
             string[,] Board = new string[4, 4];
+            
+                        
+            Room mapSet = new Room(Board);
+
+
+            //Console.WriteLine(mapSet.IsThereDragon);
+            mapSet.SetEntrancePlace();
+            mapSet.SetDragonPlace();
+           
+            mapSet.SetGoldPlace();
+             mapSet.SetPitPlaces();
+
+
+
+
 
             for (int row = 0; row < 4; row++)
             {
                 for (int col = 0; col < 4; col++)
                 {
 
-                    Board[row, col] = ".";
+                    if (Board[row, col] == null)
+                    {
+                        Board[row, col] = ".";
+                    }//= ".";
                 }
 
             }
 
 
-
-
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    Console.Write(Board[row, col]);
-                }
-                Console.WriteLine();
-            }
-
-
-
-
-
-
-
-        }
+for (int row = 0; row < 4; row++)
+{
+    for (int col = 0; col < 4; col++)
+    {
+        Console.Write(Board[row, col]);
     }
+    Console.WriteLine();
+}
+
+
+
+
+
+
+
+}
+}
 }
