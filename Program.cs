@@ -12,13 +12,19 @@ namespace Dragon_Cave
         {
 
 
+            //Room[] dd = new Room[3];
+
+            //Dragon gd = new Dragon();
+
+
+
 
             string[,] Board = new string[4, 4];
-            
-                        
+
+            Player playerSet = new Player(Board);           
             Room mapSet = new Room(Board);
 
-
+          
             //Console.WriteLine(mapSet.IsThereDragon);
             mapSet.SetEntrancePlace();
             mapSet.SetDragonPlace();
@@ -26,6 +32,7 @@ namespace Dragon_Cave
             mapSet.SetGoldPlace();
              mapSet.SetPitPlaces();
 
+            playerSet.PlayerEntrance();
 
 
 
@@ -44,17 +51,12 @@ namespace Dragon_Cave
             }
 
 
-for (int row = 0; row < 4; row++)
-{
-    for (int col = 0; col < 4; col++)
-    {
-        Console.Write(Board[row, col]);
-    }
-    Console.WriteLine();
-}
+            while (playerSet.Death1 == false)
+            {
+                playerSet.PlayerMovement();
 
 
-
+            }
 
 
 
