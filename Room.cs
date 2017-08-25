@@ -131,7 +131,7 @@ namespace Dragon_Cave
 
                 if (BaseMap[x, y] == null)
                 {
-                    BaseMap[x, y] = "Pit1";
+                    BaseMap[x, y] = "Pit";
                     Console.WriteLine(x + " " + y);
                     
                     IsTherePits11 = true;
@@ -150,7 +150,7 @@ namespace Dragon_Cave
 
                 if (BaseMap[x, y] == null)
                 {
-                    BaseMap[x, y] = "Pit2";
+                    BaseMap[x, y] = "Pit";
                     Console.WriteLine(x + " " + y);
 
                     IsTherePits21 = true;
@@ -168,7 +168,7 @@ namespace Dragon_Cave
 
                 if (BaseMap[x, y] == null)
                 {
-                    BaseMap[x, y] = "Pit3";
+                    BaseMap[x, y] = "Pit";
                     Console.WriteLine(x + " " + y);
 
                     IsTherePits31 = true;

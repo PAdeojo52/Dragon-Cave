@@ -33,6 +33,19 @@ namespace Dragon_Cave
              mapSet.SetPitPlaces();
 
             playerSet.PlayerEntrance();
+            playerSet.PlayerDirection = "East";
+
+            Console.WriteLine("Welcome to Dragon Cave!");
+            Console.WriteLine("Try to find the gold and return here to climb back out.");
+            Console.WriteLine("You have 1 arrow that you can shoot.");
+            Console.WriteLine("Try the following commands:");
+            Console.WriteLine("Move (F)orward, Turn (L)eft, Turn (R)ight,");
+            Console.WriteLine("(G)rab the Gold, (S)hoot the Arrow, (C)limb out.");
+            Console.WriteLine("(Q)uit the game, Use (X) to cheat.");
+
+
+
+
 
 
 
@@ -53,6 +66,10 @@ namespace Dragon_Cave
 
             while (playerSet.Death1 == false)
             {
+
+                Console.WriteLine("Direction: " + playerSet.PlayerDirection);
+                
+                Console.WriteLine("");
                 playerSet.PlayerMovement();
 
 
