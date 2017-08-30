@@ -42,14 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dragon.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Dialouge\Dialouge.cs" />
+    <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\PlayerController.cs" />
+    <Compile Include="Room\Dragon.cs" />
+    <Compile Include="Room\EmptyRoom.cs" />
+    <Compile Include="Room\Entrance.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Room\Gold.cs" />
+    <Compile Include="Room\Pit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Room.cs" />
+    <Compile Include="Room\Room.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

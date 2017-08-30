@@ -10,57 +10,63 @@ namespace Dragon_Cave
     {
         static void Main(string[] args)
         {
+            
+            Room[,] roomLayout = new Room[4,4];
+
+            Game newGame = new Game(roomLayout);
+            newGame.StartGame();
+
 
 
             //Room[] dd = new Room[3];
 
             //Dragon gd = new Dragon();
 
+            /*
+            Room[,] mapSet = new Room[4, 4];
+            Entrance Entrance = new Entrance();
+            Dragon Dragon = new Dragon();
+            Gold Gold = new Gold();
+            */
 
 
 
-            string[,] Board = new string[4, 4];
 
-            Player playerSet = new Player(Board);           
-            Room mapSet = new Room(Board);
+            // string[,] Board = new string[4, 4];
 
-          
+
+
+
+
+            //Player playerSet = new Player(Board);           
+            // Room mapSet = new Room(Board);
+
+
             //Console.WriteLine(mapSet.IsThereDragon);
-            mapSet.SetEntrancePlace();
-            mapSet.SetDragonPlace();
-           
-            mapSet.SetGoldPlace();
-             mapSet.SetPitPlaces();
+            // mapSet.SetEntrancePlace();
+            //mapSet.SetDragonPlace();
 
-            playerSet.PlayerEntrance();
+            //mapSet.SetGoldPlace();
+            ///mapSet.SetPitPlaces();
 
+            // playerSet.PlayerEntrance();
 
-
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-
-                    if (Board[row, col] == null)
-                    {
-                        Board[row, col] = ".";
-                    }//= ".";
-                }
-
-            }
+            //mapSet.FillInTheBlanks();
 
 
+
+
+            /*
             while (playerSet.Death1 == false)
             {
                 playerSet.PlayerMovement();
 
 
             }
+            */
 
 
 
-
-}
-}
+        }
+    }
 }
