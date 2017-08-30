@@ -117,6 +117,7 @@ namespace Dragon_Cave
                     else if (Playmovement.XPlayerPosition <= 3)
                     {
                         Playmovement.XPlayerPosition = Playmovement.XPlayerPosition + 1;
+                        Console.WriteLine(dio.YouWalkIntoNextRoom1);
                     }
 
 
@@ -136,6 +137,7 @@ namespace Dragon_Cave
                     else if (Playmovement.XPlayerPosition >= 0)
                     {
                         Playmovement.XPlayerPosition = Playmovement.XPlayerPosition - 1;
+                        Console.WriteLine(dio.YouWalkIntoNextRoom1);
                     }
                 }
 
@@ -143,7 +145,7 @@ namespace Dragon_Cave
 
 
 
-                else if (Playmovement.PlayerDirection == "South")
+                else if (Playmovement.PlayerDirection == "North")
                 {
 
                     if(Playmovement.YPlayerPosition ==0)
@@ -153,11 +155,12 @@ namespace Dragon_Cave
                     else if (Playmovement.YPlayerPosition > 0)
                     {
                         Playmovement.YPlayerPosition = Playmovement.YPlayerPosition - 1;
+                        Console.WriteLine(dio.YouWalkIntoNextRoom1);
 
                     }
                 }
 
-                else if (Playmovement.PlayerDirection == "North")
+                else if (Playmovement.PlayerDirection == "South")
                 {
                    
 
@@ -168,6 +171,7 @@ namespace Dragon_Cave
                     else if (Playmovement.YPlayerPosition <= 3)
                     {
                         Playmovement.YPlayerPosition = Playmovement.YPlayerPosition + 1;
+                        Console.WriteLine(dio.YouWalkIntoNextRoom1);
                     }
 
                     

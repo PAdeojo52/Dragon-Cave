@@ -121,6 +121,8 @@ namespace Dragon_Cave
                     RoomSet1[x, y] = dragon;
                     Console.WriteLine("Dragon: " +x + " " + y);
 
+
+
                     // IsThereDragon = true;
                 }
                 else
@@ -215,6 +217,41 @@ namespace Dragon_Cave
             }
         }
 
+        public void SetDragonDescriptions()
+        {
+            for(int x = 0; x< 4; x++)
+            {
+                for(int y = 0; y< 4; y++)
+                {
+                    if(RoomSet1[x,y] == Dragon1)
+                    {
+                       if(RoomSet1[x+1,y] == null)
+                        {
+                            RoomSet1[x + 1, y].DescriptionOne = dio.YouHearARoar1;
+                        }
+
+
+                        if (RoomSet1[x , y+1] == null)
+                        {
+                            RoomSet1[x , y + 1].DescriptionOne = dio.YouHearARoar1;
+
+
+                        }
+
+                        if (RoomSet1[x - 1, y] == null)
+                        {
+                            RoomSet1[x - 1, y].DescriptionOne = dio.YouHearARoar1;
+                        }
+
+                        if (RoomSet1[x , y -1] == null)
+                        {
+                            RoomSet1[x , y -1].DescriptionOne = dio.YouHearARoar1;
+                        }
+                    }
+                }
+            }
+        }
+
         public void Death()
         {
             Console.WriteLine("You have Died");
@@ -302,10 +339,17 @@ namespace Dragon_Cave
                 {
                     Console.WriteLine(dio.StillDragon1);
                 }
-                else if()
-                {
+               
+            }
 
-                }
+        }
+
+        public void DescriptionOutput()
+        {
+
+            if (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Dragon1 || (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Entrance1|| (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Gold1|| (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] ==)
+            {
+
             }
 
         }
