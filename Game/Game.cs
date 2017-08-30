@@ -278,10 +278,34 @@ namespace Dragon_Cave
 
         public void RoomLogic()
         {
-            if(RoomSet1[Player1.XPlayerPosition,Player1.YPlayerPosition] == Dragon1)
+            if(RoomSet1[Player1.XPlayerPosition,Player1.YPlayerPosition] == Dragon1 && Dragon1.IsDragonDead == false)
             {
                 Player1.Death1 = true;
                 Console.WriteLine(dio.DragonEatsYou1);
+
+
+            }
+            else if(RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Pit11)
+            {
+
+                Player1.Death1 = true;
+                Console.WriteLine(dio.YouFallIntoPit1);
+
+            }
+            else if (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Entrance1)
+            {
+                if(Gold1.isGoldPicked == false && Dragon1.IsDragonDead == true)
+                {
+                    Console.WriteLine(dio.FoundEntranceWitoutGold1);
+                }
+                else if(Gold1.isGoldPicked == true && Dragon1.IsDragonDead == false)
+                {
+                    Console.WriteLine(dio.StillDragon1);
+                }
+                else if()
+                {
+
+                }
             }
 
         }

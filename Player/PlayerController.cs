@@ -30,7 +30,7 @@ namespace Dragon_Cave
 
             if (s == "X" || s == "x")
             {
-                Console.WriteLine("The Player position is " + "X: " + Playmovement.XPlayerPosition + " Y: " + Playmovement.YPlayerPosition);
+                Console.WriteLine(Dio.YouAreIn1 + "X: " + Playmovement.XPlayerPosition + " Y: " + Playmovement.YPlayerPosition);
                 Console.WriteLine("");
                 for (int x = 0; x < 4; x++)
                 {
