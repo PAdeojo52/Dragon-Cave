@@ -22,6 +22,7 @@ namespace Dragon_Cave
         Dialouge dio;
         PlayerController PC;
         String Input;
+        EmptyRoom ER;
 
 
 
@@ -38,6 +39,7 @@ namespace Dragon_Cave
             dio = new Dialouge();
             PC = new PlayerController(Player);
             Input = " ";
+            ER = new EmptyRoom();
 
 
         }
@@ -72,16 +74,7 @@ namespace Dragon_Cave
             Console.WriteLine("(G)rab the Gold, (S)hoot the Arrow, (C)limb out.");
             Console.WriteLine("(Q)uit the game, Use (X) to cheat.");
 
-            /*
-            for(int x = 0; x < 4; x++)
-            {
-                for (int y = 0; y < 4; y++)
-                {
-                    Console.Write(RoomSet1[x, y].Id );
-                }
-                Console.WriteLine(" ");
-            }
-            */
+           
 
             while (Player1.Death1 == false)
             {
@@ -92,8 +85,9 @@ namespace Dragon_Cave
                 Console.WriteLine("Please enter move");
 
 
-                PC.PleyerMovement(Input, RoomSet1);
-                RoomLogic();
+                PC.PleyerMovement(Input, RoomSet1,Gold1,Dragon1);
+                //RoomLogic();
+                DescriptionOutput();
 
             }
 
@@ -123,7 +117,7 @@ namespace Dragon_Cave
 
 
 
-                    // IsThereDragon = true;
+                   
                 }
                 else
                 {
@@ -151,7 +145,7 @@ namespace Dragon_Cave
                     RoomSet1[x, y] = entrance;
                     Console.WriteLine(x + " " + y);
 
-                    // IsThereDragon = true;
+                   
                 }
                 else
                 {
@@ -178,9 +172,10 @@ namespace Dragon_Cave
                     gold.GX1 = x;
                     gold.GY1 = y;
                     RoomSet1[x, y] = gold;
-                    Console.WriteLine(x + " " + y);
+                    Console.WriteLine("gold: "+ 
+                        x + " " + y);
 
-                    // IsThereDragon = true;
+                   
                 }
                 else
                 {
@@ -188,6 +183,10 @@ namespace Dragon_Cave
                 }
             }
         }
+
+       
+            
+        
 
         public void SetPit(Pit pit)
         {
@@ -208,7 +207,7 @@ namespace Dragon_Cave
                     RoomSet1[x, y] = pit;
                     Console.WriteLine(x + " " + y);
 
-                    // IsThereDragon = true;
+                    
                 }
                 else
                 {
@@ -219,37 +218,29 @@ namespace Dragon_Cave
 
         public void SetDragonDescriptions()
         {
-            for(int x = 0; x< 4; x++)
+            if(Dragon1.DX1 <4)
             {
-                for(int y = 0; y< 4; y++)
-                {
-                    if(RoomSet1[x,y] == Dragon1)
-                    {
-                       if(RoomSet1[x+1,y] == null)
-                        {
-                            RoomSet1[x + 1, y].DescriptionOne = dio.YouHearARoar1;
-                        }
-
-
-                        if (RoomSet1[x , y+1] == null)
-                        {
-                            RoomSet1[x , y + 1].DescriptionOne = dio.YouHearARoar1;
-
-
-                        }
-
-                        if (RoomSet1[x - 1, y] == null)
-                        {
-                            RoomSet1[x - 1, y].DescriptionOne = dio.YouHearARoar1;
-                        }
-
-                        if (RoomSet1[x , y -1] == null)
-                        {
-                            RoomSet1[x , y -1].DescriptionOne = dio.YouHearARoar1;
-                        }
-                    }
-                }
+                RoomSet1[Dragon1.DX1 + 1, Dragon1.DY1].DescriptionOne = dio.FoulStench;
             }
+
+            if(Dragon1.DX1 < 0)
+            {
+                RoomSet1[Dragon1.DX1 - 1, Dragon1.DY1].DescriptionOne = dio.FoulStench;
+            }
+
+            if (Dragon1.DY1 < 4)
+            {
+                RoomSet1[Dragon1.DX1, Dragon1.DY1 + 1].DescriptionOne = dio.FoulStench;
+            }
+
+
+            if (Dragon1.DY1 < 0)
+            {
+                RoomSet1[Dragon1.DX1 , Dragon1.DY1 - 1].DescriptionOne = dio.FoulStench;
+            }
+
+
+
         }
 
         public void Death()
@@ -276,7 +267,7 @@ namespace Dragon_Cave
 
                         RoomSet1[x, y] = Dummy;
 
-                        // Room Dummy = new Room();
+                        
                     }
                 }
             }
@@ -301,7 +292,7 @@ namespace Dragon_Cave
                     RoomSet1[x, y].Id = RoomSet1[x, y].Id + "P";
                     Console.WriteLine(x + " " + y);
 
-                    // IsThereDragon = true;
+                    
                 }
                 else
                 {
@@ -309,47 +300,19 @@ namespace Dragon_Cave
                 }
             }
 
-
-
         }
 
-        public void RoomLogic()
-        {
-            if(RoomSet1[Player1.XPlayerPosition,Player1.YPlayerPosition] == Dragon1 && Dragon1.IsDragonDead == false)
-            {
-                Player1.Death1 = true;
-                Console.WriteLine(dio.DragonEatsYou1);
-
-
-            }
-            else if(RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Pit11)
-            {
-
-                Player1.Death1 = true;
-                Console.WriteLine(dio.YouFallIntoPit1);
-
-            }
-            else if (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Entrance1)
-            {
-                if(Gold1.isGoldPicked == false && Dragon1.IsDragonDead == true)
-                {
-                    Console.WriteLine(dio.FoundEntranceWitoutGold1);
-                }
-                else if(Gold1.isGoldPicked == true && Dragon1.IsDragonDead == false)
-                {
-                    Console.WriteLine(dio.StillDragon1);
-                }
-               
-            }
-
-        }
+       
 
         public void DescriptionOutput()
         {
 
-            if (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Dragon1 || (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Entrance1|| (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Gold1|| (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] ==)
+            if (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Dragon1 || RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Entrance1|| RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Gold1 || RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == ER)
             {
 
+                Console.WriteLine(RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition].DescriptionOne);
+                Console.WriteLine(RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition].DescriptionTwo);
+                Console.WriteLine(RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition].DescriptionThree );
             }
 
         }

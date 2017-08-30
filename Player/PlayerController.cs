@@ -10,18 +10,21 @@ namespace Dragon_Cave
     {
         Player playmovement;
         Dialouge dio;
+        //Gold gol;
 
         public PlayerController(Player play)
         {
 
             this.playmovement = play;
             dio = new Dialouge();
+           // gol = new Gold();
         }
 
         internal Player Playmovement { get => playmovement; set => playmovement = value; }
         internal Dialouge Dio { get => dio; set => dio = value; }
+       // internal Gold Gol { get => gol; set => gol = value; }
 
-        public void PleyerMovement(String s, Room[,] map)
+        public void PleyerMovement(String s, Room[,] map ,Gold Gol,Dragon Dragon)
         {
             s = Console.ReadLine();
 
@@ -94,6 +97,7 @@ namespace Dragon_Cave
             ///
             else if (s == "Q" || s == "q")
             {
+                Console.WriteLine(Dio.Quitter1);
                 Environment.Exit(0);
 
             }
@@ -177,6 +181,75 @@ namespace Dragon_Cave
                     
                 }
             }
+            else if (s =="G" || s == "g")
+            {
+                if (map[Playmovement.XPlayerPosition, Playmovement.YPlayerPosition] == Gol && Gol.isGoldPicked == false)
+                {
+                    Gol.isGoldPicked = true;
+                    Gol.Id = ".";
+                    Console.WriteLine(Dio.YouGotTheGold1);
+                }
+
+            }
+            else if(s == "S" || s== "s")
+            {
+
+                if (Playmovement.XPlayerPosition  == Dragon.DX1 || Playmovement.YPlayerPosition == Dragon.DY1 && Dragon.IsDragonDead==false)
+                {
+                    Dragon.IsDragonDead = true;
+                    Dragon.Id = ".";
+
+                }
+
+            }
+            else if (s == "C" || s == "c")
+            {
+
+                if(Gol.isGoldPicked == true && Dragon.IsDragonDead == true)
+                {
+                    Console.WriteLine(Dio.Winnner);
+                    Environment.Exit(0);
+                }
+                else if(Dragon.IsDragonDead && Gol.isGoldPicked == false)
+                {
+
+                }
+
+            }
+
+            /*
+             *  public void RoomLogic()
+        {
+            if(RoomSet1[Player1.XPlayerPosition,Player1.YPlayerPosition] == Dragon1 && Dragon1.IsDragonDead == false)
+            {
+                Player1.Death1 = true;
+                Console.WriteLine(dio.DragonEatsYou1);
+
+
+            }
+            else if(RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Pit11)
+            {
+
+                Player1.Death1 = true;
+                Console.WriteLine(dio.YouFallIntoPit1);
+
+            }
+            else if (RoomSet1[Player1.XPlayerPosition, Player1.YPlayerPosition] == Entrance1)
+            {
+                if(Gold1.isGoldPicked == false && Dragon1.IsDragonDead == true)
+                {
+                    Console.WriteLine(dio.FoundEntranceWitoutGold1);
+                }
+                else if(Gold1.isGoldPicked == true && Dragon1.IsDragonDead == false)
+                {
+                    Console.WriteLine(dio.StillDragon1);
+                }
+               
+            }
+
+        }*/
+
+
 
         }
 
@@ -362,5 +435,5 @@ Console.WriteLine("You walked into a wall");
 
 
 
-    }
+        }
 
