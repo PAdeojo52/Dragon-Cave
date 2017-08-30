@@ -72,7 +72,7 @@ namespace Dragon_Cave
             Console.WriteLine("(G)rab the Gold, (S)hoot the Arrow, (C)limb out.");
             Console.WriteLine("(Q)uit the game, Use (X) to cheat.");
 
-
+            /*
             for(int x = 0; x < 4; x++)
             {
                 for (int y = 0; y < 4; y++)
@@ -81,7 +81,7 @@ namespace Dragon_Cave
                 }
                 Console.WriteLine(" ");
             }
-
+            */
 
             while (Player1.Death1 == false)
             {
@@ -93,6 +93,7 @@ namespace Dragon_Cave
 
 
                 PC.PleyerMovement(Input, RoomSet1);
+                RoomLogic();
 
             }
 
@@ -118,7 +119,7 @@ namespace Dragon_Cave
                     dragon.DX1 = x;
                     dragon.DY1 = y;
                     RoomSet1[x, y] = dragon;
-                    Console.WriteLine(x + " " + y);
+                    Console.WriteLine("Dragon: " +x + " " + y);
 
                     // IsThereDragon = true;
                 }
@@ -277,7 +278,11 @@ namespace Dragon_Cave
 
         public void RoomLogic()
         {
-
+            if(RoomSet1[Player1.XPlayerPosition,Player1.YPlayerPosition] == Dragon1)
+            {
+                Player1.Death1 = true;
+                Console.WriteLine(dio.DragonEatsYou1);
+            }
 
         }
 

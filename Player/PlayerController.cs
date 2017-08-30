@@ -21,25 +21,35 @@ namespace Dragon_Cave
         internal Player Playmovement { get => playmovement; set => playmovement = value; }
         internal Dialouge Dio { get => dio; set => dio = value; }
 
-        public void PleyerMovement(String s , Room[,] map)
+        public void PleyerMovement(String s, Room[,] map)
         {
             s = Console.ReadLine();
-            if(s == "X" || s == "x")
+
+
+
+
+            if (s == "X" || s == "x")
             {
-                for(int x = 0; x<3;x++)
+                Console.WriteLine("The Player position is " + "X: " + Playmovement.XPlayerPosition + " Y: " + Playmovement.YPlayerPosition);
+                Console.WriteLine("");
+                for (int x = 0; x < 4; x++)
                 {
-                    for(int y = 0; y<3; y++)
+                    for (int y = 0; y < 4; y++)
                     {
                         //Console.WriteLine(x);
-                        Console.Write(map[x, y].Id + " " + "X: " + x + "Y: " + y  );
+                        Console.Write(map[x, y].Id /*+ " " + "X: " + x + "Y: " + y*/ );
                     }
                     Console.WriteLine(" ");
                 }
 
+
             }
-            else if (s== "l" || s == "L")
+            //
+
+
+            else if (s == "l" || s == "L")
             {
-                if(Playmovement.PlayerDirection == "East")
+                if (Playmovement.PlayerDirection == "East")
                 {
                     Playmovement.PlayerDirection = "North";
                 }
@@ -56,9 +66,12 @@ namespace Dragon_Cave
                     Playmovement.PlayerDirection = "East";
                 }
             }
-            else if( s== "r" || s == "R")
+            ///
+
+
+            else if (s == "r" || s == "R")
             {
-                if(Playmovement.PlayerDirection == "East")
+                if (Playmovement.PlayerDirection == "East")
                 {
                     Playmovement.PlayerDirection = "South";
 
@@ -77,38 +90,96 @@ namespace Dragon_Cave
                 }
 
             }
-            else if (s == "Q" || s== "q")
+
+            ///
+            else if (s == "Q" || s == "q")
             {
                 Environment.Exit(0);
 
             }
-            else if(s == "F" || s == "f")
+            ///
+
+
+
+            else if (s == "F" || s == "f")
             {
 
-                if (Playmovement.XPlayerPosition <= 4)
+
+                if (Playmovement.PlayerDirection == "East")
                 {
-                    if (Playmovement.PlayerDirection == "East")
+
+                    if (Playmovement.XPlayerPosition == 4)
+                    {
+                        Console.WriteLine(dio.YouHitAWall1);
+                        //Playmovement.XPlayerPosition = Playmovement.XPlayerPosition - 1;
+
+                    }
+                    else if (Playmovement.XPlayerPosition <= 3)
                     {
                         Playmovement.XPlayerPosition = Playmovement.XPlayerPosition + 1;
                     }
+
+
                 }
-                else
-                {
-                    dio.
-                }
+
+
+
                 else if (Playmovement.PlayerDirection == "West")
                 {
-                    Playmovement.XPlayerPosition = Playmovement.XPlayerPosition - 1;
+
+                    if (Playmovement.XPlayerPosition == 0)
+                    {
+                        Console.WriteLine(dio.YouHitAWall1);
+                        //Playmovement.XPlayerPosition = Playmovement.XPlayerPosition - 1;
+
+                    }
+                    else if (Playmovement.XPlayerPosition >= 0)
+                    {
+                        Playmovement.XPlayerPosition = Playmovement.XPlayerPosition - 1;
+                    }
                 }
+
+
+
+
+
                 else if (Playmovement.PlayerDirection == "South")
                 {
-                    Playmovement.YPlayerPosition = Playmovement.YPlayerPosition - 1;
+
+                    if(Playmovement.YPlayerPosition ==0)
+                    {
+                        Console.WriteLine(dio.YouHitAWall1);
+                    }
+                    else if (Playmovement.YPlayerPosition > 0)
+                    {
+                        Playmovement.YPlayerPosition = Playmovement.YPlayerPosition - 1;
+
+                    }
                 }
+
                 else if (Playmovement.PlayerDirection == "North")
                 {
-                    Playmovement.YPlayerPosition = Playmovement.YPlayerPosition + 1;
+                   
+
+                    if (Playmovement.XPlayerPosition == 4)
+                    {
+                        Console.WriteLine(dio.YouHitAWall1);
+                    }
+                    else if (Playmovement.YPlayerPosition <= 3)
+                    {
+                        Playmovement.YPlayerPosition = Playmovement.YPlayerPosition + 1;
+                    }
+
+                    
                 }
             }
+
+        }
+
+
+
+
+
 
         }
 
@@ -288,4 +359,4 @@ Console.WriteLine("You walked into a wall");
 
 
     }
-}
+
